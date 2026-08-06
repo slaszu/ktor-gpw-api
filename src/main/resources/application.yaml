@@ -1,0 +1,9 @@
+ktor:
+  deployment:
+    port: 8080
+  application:
+    modules:
+      - pl.slaszu.HttpKt.configureHttp
+      - pl.slaszu.SerializationKt.configureSerialization
+      - pl.slaszu.KoinKt.configureKoin
+      - pl.slaszu.RoutingKt.configureRouting
