@@ -1,8 +1,8 @@
 package pl.slaszu.core.internal.repository
 
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.v1.jdbc.Database
+import org.jetbrains.exposed.v1.jdbc.selectAll
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 import pl.slaszu.core.api.StockDTO
 import pl.slaszu.core.api.StockRepository
 import pl.slaszu.core.internal.db.StocksTable

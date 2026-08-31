@@ -1,13 +1,12 @@
 package pl.slaszu.core.di
 
-import org.koin.dsl.bind
-import org.koin.dsl.module
-import pl.slaszu.core.api.StockRepository
-import pl.slaszu.core.internal.repository.ExposedStockRepository
-import pl.slaszu.core.api.DatabaseInitializer
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.v1.jdbc.Database
+import org.koin.dsl.module
+import pl.slaszu.core.api.DatabaseInitializer
+import pl.slaszu.core.api.StockRepository
+import pl.slaszu.core.internal.repository.ExposedStockRepository
 
 val coreModule = module {
     single<Database> {
@@ -24,8 +23,8 @@ val coreModule = module {
     }
 
     single { DatabaseInitializer(db = get()) }
-    
-    single<StockRepository> { 
-        ExposedStockRepository(db = get()) 
+
+    single<StockRepository> {
+        ExposedStockRepository(db = get())
     }
 }

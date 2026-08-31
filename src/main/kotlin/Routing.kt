@@ -14,7 +14,7 @@ fun Application.configureRouting() {
         get("/") {
             call.respondText("Hello, World!")
         }
-        get("/json/kotlinx-serialization") {
+        get("/stocks") {
             call.respond(stockRepository.getAll())
         }
     }

@@ -49,25 +49,27 @@ class DatabaseInitializer(
                         .toLocalDateTime(timeZone)
 
                     val priceChangePercent = Random.nextDouble(-0.03, 0.03).toFloat()
-                    val priceOpen = currentPrice
-                    val priceClose = (priceOpen * (1f + priceChangePercent)).coerceAtLeast(1.0f)
+                    val priceOpenVal = currentPrice
+                    val priceCloseVal = (priceOpenVal * (1f + priceChangePercent)).coerceAtLeast(1.0f)
 
-                    val priceHigh = maxOf(priceOpen, priceClose) * (1f + Random.nextDouble(0.001, 0.015).toFloat())
-                    val priceLow = minOf(priceOpen, priceClose) * (1f - Random.nextDouble(0.001, 0.015).toFloat())
+                    val priceHighVal =
+                        maxOf(priceOpenVal, priceCloseVal) * (1f + Random.nextDouble(0.001, 0.015).toFloat())
+                    val priceLowVal =
+                        minOf(priceOpenVal, priceCloseVal) * (1f - Random.nextDouble(0.001, 0.015).toFloat())
                     val dailyVolume = Random.nextInt(10_000, 500_000)
 
                     StockPricesTable.insert {
                         it[id] = UUID.randomUUID()
                         it[stockId] = stockUuid
-                        it[price] = priceClose
-                        it[priceOpen] = priceOpen
-                        it[priceHigh] = priceHigh
-                        it[priceLow] = priceLow
+                        it[price] = priceCloseVal
+                        it[priceOpen] = priceOpenVal
+                        it[priceHigh] = priceHighVal
+                        it[priceLow] = priceLowVal
                         it[volume] = dailyVolume
                         it[datetime] = recordDate
                     }
 
-                    currentPrice = priceClose
+                    currentPrice = priceCloseVal
                 }
             }
         }
