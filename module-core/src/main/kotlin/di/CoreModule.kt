@@ -4,15 +4,18 @@ import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import org.jetbrains.exposed.v1.jdbc.Database
 import org.koin.dsl.module
-import pl.slaszu.core.api.DatabaseInitializer
+import pl.slaszu.core.api.StockPriceRepository
 import pl.slaszu.core.api.StockRepository
+import pl.slaszu.core.internal.repository.ExposedStockPriceRepository
 import pl.slaszu.core.internal.repository.ExposedStockRepository
 
-val coreModule = module {
+fun coreModule(url: String, user: String, pass: String) = module {
     single<Database> {
         val config = HikariConfig().apply {
-            driverClassName = "org.h2.Driver"
-            jdbcUrl = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" // lub do pliku: "jdbc:h2:./data/db"
+            driverClassName = "com.mysql.cj.jdbc.Driver"
+            jdbcUrl = url
+            username = user
+            password = pass
             maximumPoolSize = 10
             isAutoCommit = false
             transactionIsolation = "TRANSACTION_REPEATABLE_READ"
@@ -22,9 +25,11 @@ val coreModule = module {
         Database.connect(dataSource)
     }
 
-    single { DatabaseInitializer(db = get()) }
-
     single<StockRepository> {
         ExposedStockRepository(db = get())
+    }
+
+    single<StockPriceRepository> {
+        ExposedStockPriceRepository(db = get())
     }
 }

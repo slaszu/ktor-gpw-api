@@ -14,7 +14,7 @@ dependencies {
     implementation(libs.exposed.core)
     implementation(libs.exposed.jdbc)
     implementation(libs.exposed.kotlin.datetime)
-    
-    implementation(libs.h2database.h2)
+
+    implementation(libs.mysql.connector)
     implementation(libs.hikaricp)
 }
