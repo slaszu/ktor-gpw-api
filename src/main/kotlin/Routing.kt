@@ -14,13 +14,14 @@ fun Application.configureRouting() {
 
     routing {
         get("/") {
-            call.respondText("Hello, World!")
+            call.respondText("/openapi")
         }
         get("/stocks") {
             call.respond(stockRepository.getAll())
         }
-        get("/stock_prices") {
-            call.respond(stockPriceRepository.getLatest("xxx", 5))
+        get("/stocks/prices/{code}") {
+            var code = call.parameters["code"] ?: throw IllegalArgumentException("Invalid Code")
+            call.respond(stockPriceRepository.getLatest(code, 5))
         }
     }
 }

@@ -1,6 +1,7 @@
 package pl.slaszu.core.internal.db
 
 import org.jetbrains.exposed.v1.core.dao.id.java.UUIDTable
+import org.jetbrains.exposed.v1.datetime.date
 import org.jetbrains.exposed.v1.datetime.datetime
 
 internal object StockPricesTable : UUIDTable(name = "stock_price", columnName = "id") {
@@ -17,5 +18,5 @@ internal object StockPricesTable : UUIDTable(name = "stock_price", columnName = 
 
     val updatedAt = datetime("updated_at")
 
-    val date = datetime("date")
+    val date = date("date")
 }
