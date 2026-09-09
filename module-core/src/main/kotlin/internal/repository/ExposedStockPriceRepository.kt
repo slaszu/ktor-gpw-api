@@ -1,8 +1,9 @@
 package pl.slaszu.core.internal.repository
 
-import org.jetbrains.exposed.v1.core.SortOrder
-import org.jetbrains.exposed.v1.core.eq
+import kotlinx.datetime.LocalDate
+import org.jetbrains.exposed.v1.core.*
 import org.jetbrains.exposed.v1.jdbc.Database
+import org.jetbrains.exposed.v1.jdbc.andWhere
 import org.jetbrains.exposed.v1.jdbc.selectAll
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 import pl.slaszu.core.api.StockPriceDTO
@@ -23,42 +24,64 @@ class ExposedStockPriceRepository(
                 StocksTable.code eq stockCode
             }
             .orderBy(
-                StockPricesTable.updatedAt to SortOrder.DESC,
+                StockPricesTable.date to SortOrder.DESC,
             )
             .limit(qty).map { row ->
-                StockPriceDTO(
-                    price = row[StockPricesTable.price],
-                    priceOpen = row[StockPricesTable.priceOpen],
-                    priceHigh = row[StockPricesTable.priceHigh],
-                    priceLow = row[StockPricesTable.priceLow],
-                    volume = row[StockPricesTable.volume],
-                    updatedAt = row[StockPricesTable.updatedAt],
-                    date = row[StockPricesTable.date]
-                )
+                map(row)
             }
-    }
-
-    override fun getRange(
-        stockCode: String,
-        dateFrom: String,
-        dateTo: String
-    ): List<StockPriceDTO> {
-        TODO("Not yet implemented")
     }
 
     override fun getFromDate(
         stockCode: String,
-        dateFrom: String,
+        dateFrom: LocalDate,
         qty: Int
-    ): List<StockPriceDTO> {
-        TODO("Not yet implemented")
+    ): List<StockPriceDTO> = transaction(db) {
+        StockPricesTable.innerJoin(StocksTable)
+            .selectAll()
+            .where {
+                StockPricesTable.date greaterEq dateFrom
+            }
+            .andWhere {
+                StocksTable.code eq stockCode
+            }
+            .orderBy(
+                StockPricesTable.date to SortOrder.ASC,
+            )
+            .limit(qty).map { row ->
+                map(row)
+            }
     }
 
     override fun getToDate(
         stockCode: String,
-        dateTo: String,
+        dateTo: LocalDate,
         qty: Int
-    ): List<StockPriceDTO> {
-        TODO("Not yet implemented")
+    ): List<StockPriceDTO> = transaction(db) {
+        StockPricesTable.innerJoin(StocksTable)
+            .selectAll()
+            .where {
+                StockPricesTable.date lessEq dateTo
+            }
+            .andWhere {
+                StocksTable.code eq stockCode
+            }
+            .orderBy(
+                StockPricesTable.date to SortOrder.DESC,
+            )
+            .limit(qty).map { row ->
+                map(row)
+            }
+    }
+
+    private fun map(row: ResultRow): StockPriceDTO {
+        return StockPriceDTO(
+            price = row[StockPricesTable.price],
+            priceOpen = row[StockPricesTable.priceOpen],
+            priceHigh = row[StockPricesTable.priceHigh],
+            priceLow = row[StockPricesTable.priceLow],
+            volume = row[StockPricesTable.volume],
+            updatedAt = row[StockPricesTable.updatedAt],
+            date = row[StockPricesTable.date]
+        )
     }
 }

@@ -25,6 +25,8 @@ dependencies {
     implementation(ktorLibs.server.routingOpenapi)
     implementation(ktorLibs.server.swagger)
 
+    implementation(libs.kotlinx.datetime)
+
     implementation(libs.koin.ktor)
     implementation(libs.koin.loggerSlf4j)
     implementation(libs.logback.classic)

@@ -21,9 +21,23 @@ fun Application.configureRouting() {
         }
         get("/stocks/prices/{code}") {
 
-            val qty = call.request.queryParameters["qty"] ?: "90"
-            var code = call.parameters["code"] ?: throw IllegalArgumentException("Invalid Code")
-            call.respond(stockPriceRepository.getLatest(code, qty.toInt()))
+            val qty = call.getIntQueryParam("qty", 90)
+            val code = call.parameters["code"] ?: throw IllegalArgumentException("Invalid Code")
+            call.respond(stockPriceRepository.getLatest(code, qty))
+        }
+        get("/stocks/prices/{code}/from/{dateFrom}") {
+
+            val qty = call.getIntQueryParam("qty", 90)
+            val code = call.parameters["code"] ?: throw IllegalArgumentException("Invalid Code")
+            val dateFrom = call.getLocalDatePathParam("dateFrom")
+            call.respond(stockPriceRepository.getFromDate(code, dateFrom, qty))
+        }
+        get("/stocks/prices/{code}/to/{dateTo}") {
+
+            val qty = call.getIntQueryParam("qty", 90)
+            val code = call.parameters["code"] ?: throw IllegalArgumentException("Invalid Code")
+            val dateTo = call.getLocalDatePathParam("dateTo")
+            call.respond(stockPriceRepository.getToDate(code, dateTo, qty))
         }
     }
 }
