@@ -20,8 +20,10 @@ fun Application.configureRouting() {
             call.respond(stockRepository.getAll())
         }
         get("/stocks/prices/{code}") {
+
+            val qty = call.request.queryParameters["qty"] ?: "90"
             var code = call.parameters["code"] ?: throw IllegalArgumentException("Invalid Code")
-            call.respond(stockPriceRepository.getLatest(code, 5))
+            call.respond(stockPriceRepository.getLatest(code, qty.toInt()))
         }
     }
 }
