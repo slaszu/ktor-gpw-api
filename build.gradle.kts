@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "pl.slaszu"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0"
 
 ktor {
     fatJar {
