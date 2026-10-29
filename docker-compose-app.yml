@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+  app:
+    container_name: gpw-api-app
+    build:
+      context: .
+      dockerfile: ./.docker/Dockerfile
+    environment:
+      TZ: Europe/Warsaw
+      DB_URL: mysql
+    volumes:
+      - ./ktor-gpw-api-github-release.jar:/app-build/ktor-gpw-api-prod.jar
+    networks:
+      - gpw-network
+    entrypoint: java -jar /app-build/ktor-gpw-api-prod.jar
+
+networks:
+  gpw-network:
+    external: true

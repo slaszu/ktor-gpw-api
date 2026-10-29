@@ -1,0 +1,43 @@
+
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+    alias(ktorLibs.plugins.ktor)
+    alias(libs.plugins.kotlin.serialization)
+}
+
+group = "pl.slaszu"
+version = "1.0.0-SNAPSHOT"
+
+ktor {
+    fatJar {
+        archiveFileName.set("ktor-gpw-api.jar")
+    }
+}
+
+application {
+    mainClass = "io.ktor.server.netty.EngineMain"
+}
+
+kotlin {
+    jvmToolchain(21)
+}
+
+dependencies {
+    implementation(ktorLibs.serialization.kotlinx.json)
+    implementation(ktorLibs.server.config.yaml)
+    implementation(ktorLibs.server.contentNegotiation)
+    implementation(ktorLibs.server.core)
+    implementation(ktorLibs.server.netty)
+    implementation(ktorLibs.server.routingOpenapi)
+    implementation(ktorLibs.server.swagger)
+
+    implementation(libs.kotlinx.datetime)
+
+    implementation(libs.koin.ktor)
+    implementation(libs.koin.loggerSlf4j)
+    implementation(libs.logback.classic)
+    implementation(project(":module-core"))
+
+    testImplementation(kotlin("test"))
+    testImplementation(ktorLibs.server.testHost)
+}
