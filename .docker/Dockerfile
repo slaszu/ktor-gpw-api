@@ -1,4 +1,4 @@
-FROM amazoncorretto:17-alpine
+FROM amazoncorretto:21-alpine
 
 # https://stackoverflow.com/a/68515645
 RUN apk add --no-cache fontconfig ttf-dejavu
