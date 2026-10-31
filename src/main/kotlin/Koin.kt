@@ -4,6 +4,7 @@ import io.ktor.server.application.*
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
+import pl.slaszu.core.api.StockPriceRepository
 import pl.slaszu.core.di.coreModule
 
 fun Application.configureKoin() {
@@ -19,5 +20,14 @@ fun Application.configureKoin() {
             ), module {
                 single { environment.config }
             })
+
+        try {
+            val stocks = koin.get<StockPriceRepository>()
+            val latest = stocks.getLatest("PZU", 1)
+            println(">>> Latest price for PZU")
+            println(latest)
+        } catch (e: Exception) {
+            println(">>> ERROR: ${e.message}")
+        }
     }
 }

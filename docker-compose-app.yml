@@ -7,7 +7,7 @@ services:
       dockerfile: ./.docker/Dockerfile
     environment:
       TZ: Europe/Warsaw
-      DB_URL: mysql
+      DB_URL: jdbc:mysql://mysql:3306/gpw-db
     volumes:
       - ./ktor-gpw-api-github-release.jar:/app-build/ktor-gpw-api-prod.jar
     networks:
