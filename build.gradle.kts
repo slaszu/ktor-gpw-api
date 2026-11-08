@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(ktorLibs.plugins.ktor)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.graalvm.native)
 }
 
 group = "pl.slaszu"
@@ -20,6 +21,30 @@ application {
 
 kotlin {
     jvmToolchain(21)
+}
+
+
+graalvmNative {
+    binaries {
+        named("main") {
+            verbose.set(true)
+
+            buildArgs.add("--enable-native-access=ALL-UNNAMED")
+
+            buildArgs.add("-H:+InstallExitHandlers")
+            buildArgs.add("-H:+ReportUnsupportedElementsAtRuntime")
+            buildArgs.add("-H:+ReportExceptionStackTraces")
+
+            imageName.set("ktor-gpw-api")
+        }
+    }
+    binaries.all {
+        resources.autodetect()
+    }
+    toolchainDetection.set(true)
+    metadataRepository {
+        enabled = true
+    }
 }
 
 dependencies {

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "pl.slaszu.ApplicationKt",
+    "queryAllPublicMethods": true,
+    "methods": [
+      {
+        "name": "module",
+        "parameterTypes": [
+          "io.ktor.server.application.Application"
+        ]
+      }
+    ]
+  }
+]
