@@ -1,4 +1,4 @@
-package pl.slaszu
+package pl.slaszu.module
 
 import io.ktor.http.ContentType
 import io.ktor.openapi.OpenApiInfo

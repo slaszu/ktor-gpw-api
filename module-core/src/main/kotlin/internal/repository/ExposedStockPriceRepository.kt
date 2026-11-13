@@ -11,7 +11,7 @@ import pl.slaszu.core.api.StockPriceRepository
 import pl.slaszu.core.internal.db.StockPricesTable
 import pl.slaszu.core.internal.db.StocksTable
 
-class ExposedStockPriceRepository(
+internal class ExposedStockPriceRepository(
     private val db: Database
 ) : StockPriceRepository {
     override fun getLatest(

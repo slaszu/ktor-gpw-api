@@ -1,4 +1,4 @@
-package pl.slaszu
+package pl.slaszu.module
 
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -6,6 +6,8 @@ import io.ktor.server.routing.*
 import org.koin.ktor.ext.inject
 import pl.slaszu.core.api.StockPriceRepository
 import pl.slaszu.core.api.StockRepository
+import pl.slaszu.getIntQueryParam
+import pl.slaszu.getLocalDatePathParam
 
 fun Application.configureRouting() {
 
