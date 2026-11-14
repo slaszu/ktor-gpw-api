@@ -16,7 +16,7 @@ fun Application.configureRouting() {
 
     routing {
         get("/") {
-            call.respondText("/openapi")
+            call.respondText("/swagger")
         }
         get("/stocks") {
             call.respond(stockRepository.getAll())

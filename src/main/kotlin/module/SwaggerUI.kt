@@ -7,9 +7,9 @@ import io.ktor.server.plugins.swagger.*
 import io.ktor.server.routing.*
 import io.ktor.server.routing.openapi.OpenApiDocSource
 
-fun Application.configureHttp() {
+fun Application.configureSwaggerUI() {
     routing {
-        swaggerUI("openapi") {
+        swaggerUI("swagger") {
             info = OpenApiInfo("GPW Api", "1.0")
             source = OpenApiDocSource.Routing(ContentType.Application.Json) {
                 routingRoot.descendants()

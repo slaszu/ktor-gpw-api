@@ -36,15 +36,15 @@ fun Application.configureKoin() {
             )
         )
 
-        try {
-            val gpwParser = koin.get<GpwParser>()
-            val data = gpwParser.getDataForDate(Clock.System.todayIn(TimeZone.currentSystemDefault()))
-            println(">>> Gpw data")
-            println(data)
-
-        } catch (e: Exception) {
-            println(">>GPWParser `error: ${e.localizedMessage}")
-        }
+//        try {
+//            val gpwParser = koin.get<GpwParser>()
+//            val data = gpwParser.getDataForDate(Clock.System.todayIn(TimeZone.currentSystemDefault()))
+//            println(">>> Gpw data")
+//            println(data)
+//
+//        } catch (e: Exception) {
+//            println(">>GPWParser `error: ${e.localizedMessage}")
+//        }
 
 
         try {
