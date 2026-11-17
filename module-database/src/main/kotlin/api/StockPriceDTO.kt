@@ -1,9 +1,9 @@
-package pl.slaszu.core.api
+package pl.slaszu.database.api
 
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Serializable
-import pl.slaszu.core.internal.SimpleLocalDateTimeSerializer
+import pl.slaszu.database.internal.SimpleLocalDateTimeSerializer
 
 @Serializable
 data class StockPriceDTO(

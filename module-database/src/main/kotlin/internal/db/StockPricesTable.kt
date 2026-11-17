@@ -1,4 +1,4 @@
-package pl.slaszu.core.internal.db
+package pl.slaszu.database.internal.db
 
 import org.jetbrains.exposed.v1.core.dao.id.java.UUIDTable
 import org.jetbrains.exposed.v1.datetime.date

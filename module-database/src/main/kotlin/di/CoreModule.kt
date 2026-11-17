@@ -1,13 +1,15 @@
-package pl.slaszu.core.di
+package pl.slaszu.database.di
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import org.jetbrains.exposed.v1.jdbc.Database
 import org.koin.dsl.module
-import pl.slaszu.core.api.StockPriceRepository
-import pl.slaszu.core.api.StockRepository
-import pl.slaszu.core.internal.repository.ExposedStockPriceRepository
-import pl.slaszu.core.internal.repository.ExposedStockRepository
+import pl.slaszu.database.api.StockPricePersister
+import pl.slaszu.database.api.StockPriceRepository
+import pl.slaszu.database.api.StockRepository
+import pl.slaszu.database.internal.persister.StockPricePersisterImpl
+import pl.slaszu.database.internal.repository.ExposedStockPriceRepository
+import pl.slaszu.database.internal.repository.ExposedStockRepository
 
 fun coreModule(url: String, user: String, pass: String) = module {
     single<Database> {
@@ -31,5 +33,9 @@ fun coreModule(url: String, user: String, pass: String) = module {
 
     single<StockPriceRepository> {
         ExposedStockPriceRepository(db = get())
+    }
+
+    single<StockPricePersister> {
+        StockPricePersisterImpl(database = get())
     }
 }

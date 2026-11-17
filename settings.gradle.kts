@@ -21,6 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "ktor-gpw-api"
 
-include("module-core")
+include("module-database")
 
 include("module-gpwparser")

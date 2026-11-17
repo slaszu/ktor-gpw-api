@@ -1,4 +1,4 @@
-package pl.slaszu.core.api
+package pl.slaszu.database.api
 
 import kotlinx.datetime.LocalDate
 

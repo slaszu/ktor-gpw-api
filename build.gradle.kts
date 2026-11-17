@@ -61,7 +61,7 @@ dependencies {
     implementation(libs.koin.ktor)
     implementation(libs.koin.loggerSlf4j)
     implementation(libs.logback.classic)
-    implementation(project(":module-core"))
+    implementation(project(":module-database"))
     implementation(project(":module-gpwparser"))
 
     testImplementation(kotlin("test"))

@@ -1,11 +1,11 @@
-package pl.slaszu.core.internal.repository
+package pl.slaszu.database.internal.repository
 
 import org.jetbrains.exposed.v1.jdbc.Database
 import org.jetbrains.exposed.v1.jdbc.selectAll
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
-import pl.slaszu.core.api.StockDTO
-import pl.slaszu.core.api.StockRepository
-import pl.slaszu.core.internal.db.StocksTable
+import pl.slaszu.database.api.StockDTO
+import pl.slaszu.database.api.StockRepository
+import pl.slaszu.database.internal.db.StocksTable
 
 internal class ExposedStockRepository(
     private val db: Database

@@ -1,4 +1,4 @@
-package pl.slaszu.core.internal.repository
+package pl.slaszu.database.internal.repository
 
 import kotlinx.datetime.LocalDate
 import org.jetbrains.exposed.v1.core.*
@@ -6,10 +6,10 @@ import org.jetbrains.exposed.v1.jdbc.Database
 import org.jetbrains.exposed.v1.jdbc.andWhere
 import org.jetbrains.exposed.v1.jdbc.selectAll
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
-import pl.slaszu.core.api.StockPriceDTO
-import pl.slaszu.core.api.StockPriceRepository
-import pl.slaszu.core.internal.db.StockPricesTable
-import pl.slaszu.core.internal.db.StocksTable
+import pl.slaszu.database.api.StockPriceDTO
+import pl.slaszu.database.api.StockPriceRepository
+import pl.slaszu.database.internal.db.StockPricesTable
+import pl.slaszu.database.internal.db.StocksTable
 
 internal class ExposedStockPriceRepository(
     private val db: Database

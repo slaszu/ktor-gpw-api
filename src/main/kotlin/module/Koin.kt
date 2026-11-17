@@ -1,17 +1,12 @@
 package pl.slaszu.module
 
 import io.ktor.server.application.*
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.todayIn
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
-import pl.slaszu.core.api.StockPriceRepository
-import pl.slaszu.core.di.coreModule
-import pl.slaszu.gpwparser.api.GpwParser
+import pl.slaszu.database.api.StockPriceRepository
+import pl.slaszu.database.di.coreModule
 import pl.slaszu.gpwparser.di.gpwparserModule
-import kotlin.time.Clock
 
 fun Application.configureKoin() {
     install(Koin) {
@@ -38,7 +33,7 @@ fun Application.configureKoin() {
 
 //        try {
 //            val gpwParser = koin.get<GpwParser>()
-//            val data = gpwParser.getDataForDate(Clock.System.todayIn(TimeZone.currentSystemDefault()))
+//            val data = gpwParser.getDataForDate(now())
 //            println(">>> Gpw data")
 //            println(data)
 //

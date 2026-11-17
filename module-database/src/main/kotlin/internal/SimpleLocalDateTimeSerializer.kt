@@ -1,4 +1,4 @@
-package pl.slaszu.core.internal
+package pl.slaszu.database.internal
 
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.KSerializer

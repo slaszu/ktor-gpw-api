@@ -2,13 +2,21 @@ package pl.slaszu.module
 
 import io.ktor.server.application.*
 import kotlinx.coroutines.*
-import java.time.DayOfWeek
-import java.time.LocalTime
+import kotlinx.datetime.DayOfWeek.FRIDAY
+import kotlinx.datetime.DayOfWeek.MONDAY
+import org.koin.ktor.ext.inject
+import pl.slaszu.database.api.StockPricePersister
+import pl.slaszu.getStockDTOForDB
+import pl.slaszu.getStockPriceDTOForDB
+import pl.slaszu.gpwparser.api.GpwParser
+import pl.slaszu.now
 import java.time.ZoneId
-import java.time.ZonedDateTime
 import kotlin.time.Duration.Companion.minutes
 
 fun Application.configureScheduler() {
+
+    val gpwParser by inject<GpwParser>()
+    val stockPricePersister by inject<StockPricePersister>()
 
     println(">> Scheduler configured")
 
@@ -17,15 +25,20 @@ fun Application.configureScheduler() {
 
     scope.launch {
         while (isActive) {
-            val now = ZonedDateTime.now(timeZone)
-            val isWeekday = now.dayOfWeek in DayOfWeek.MONDAY..DayOfWeek.FRIDAY
-            val isWorkingHour = now.toLocalTime() in LocalTime.of(9, 0)..LocalTime.of(17, 0)
 
+            val now = now()
+            val isWeekday = now.dayOfWeek in MONDAY..FRIDAY
+            val isWorkingHour = now.hour in 9..16
             if (isWeekday && isWorkingHour) {
                 try {
-                    println("Wykonywanie zadania o: $now")
-
-
+                    println("Wykonywanie zadania dla: $now")
+                    gpwParser.getDataForDate(now.date).forEach {
+                        val stockDTO = it.getStockDTOForDB()
+                        val stockPriceDTO = it.getStockPriceDTOForDB()
+                        println(">>> Stock: $stockDTO")
+                        println(">>> Stock price: $stockPriceDTO")
+                        stockPricePersister.persist(stockDTO, stockPriceDTO)
+                    }
                 } catch (e: Exception) {
                     log.error("Błąd podczas wykonywania zadania", e)
                 }
