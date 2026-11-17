@@ -1,0 +1,140 @@
+openapi: "3.1.0"
+info:
+  title: "ktor_gpw_api API"
+  description: "ktor_gpw_api API"
+  version: "1.0.0"
+servers:
+  - url: "https://ktor_gpw_api"
+paths:
+  /:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "/swagger"
+  /stocks:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/StockDTO"
+  /stocks/prices/{code}:
+    get:
+      description: ""
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/StockPriceDTO"
+  /stocks/prices/{code}/from/{dateFrom}:
+    get:
+      description: ""
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "dateFrom"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/StockPriceDTO"
+  /stocks/prices/{code}/to/{dateTo}:
+    get:
+      description: ""
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "dateTo"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/StockPriceDTO"
+components:
+  schemas:
+    StockDTO:
+      type: "object"
+      properties:
+        code:
+          type: "string"
+          nullable: true
+        name:
+          type: "string"
+          nullable: true
+    StockPriceDTO:
+      type: "object"
+      properties:
+        price:
+          type: "number"
+          format: "float"
+        priceOpen:
+          type: "number"
+          format: "float"
+        priceHigh:
+          type: "number"
+          format: "float"
+        priceLow:
+          type: "number"
+          format: "float"
+        volume:
+          type: "integer"
+          format: "int32"
+        updatedAt:
+          type: "string"
+          format: "date-time"
+        date:
+          type: "string"
+          format: "date"
+      required:
+        - "price"
+        - "priceOpen"
+        - "priceHigh"
+        - "priceLow"
+        - "volume"
+        - "updatedAt"
+        - "date"
