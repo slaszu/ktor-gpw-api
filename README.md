@@ -35,3 +35,14 @@ If the server starts successfully, you'll see the following output:
 2024-12-04 14:32:45.584 [main] INFO  Application - Application started in 0.303 seconds.
 2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
 ```
+
+## Native image
+To build a native image, use the following command:
+```
+./gradlew nativeCompile
+```
+
+To generate reflection configuration for the native image, use the following command:
+```
+java -agentlib:native-image-agent=config-output-dir=src/main/resources/META-INF/native-image/ -jar build/libs/ktor-gpw-api.jar
+```

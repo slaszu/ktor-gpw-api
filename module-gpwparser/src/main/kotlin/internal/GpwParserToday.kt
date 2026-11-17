@@ -7,18 +7,18 @@ import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
 import pl.slaszu.gpwparser.api.StockPriceDTO
 import java.io.File
-import java.net.URL
+import java.net.URI
 
 
 internal class GpwParserToday(
     private val url: String, private val dirTemp: String
 ) {
-    
+
     fun getDataForDate(date: LocalDate): List<StockPriceDTO> {
 
         val file = File(this.dirTemp, "today_latest.xls")
 
-        FileUtils.copyURLToFile(URL(this.url), file, 3000, 3000)
+        FileUtils.copyURLToFile(URI(this.url).toURL(), file, 3000, 3000)
 
         val document: Document = Jsoup.parse(file)
 

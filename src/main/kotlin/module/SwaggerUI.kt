@@ -11,9 +11,7 @@ fun Application.configureSwaggerUI() {
     routing {
         swaggerUI("swagger") {
             info = OpenApiInfo("GPW Api", "1.0")
-            source = OpenApiDocSource.Routing(ContentType.Application.Json) {
-                routingRoot.descendants()
-            }
+            source = OpenApiDocSource.File("openapi/documentation.yaml")
         }
     }
 }

@@ -8,10 +8,10 @@ import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
 import pl.slaszu.gpwparser.api.StockPriceDTO
-import java.net.URL
+import java.net.URI
 import java.text.SimpleDateFormat
 import java.time.ZoneId
-import java.util.Date
+import java.util.*
 
 
 internal class GpwParserArchive(
@@ -30,7 +30,7 @@ internal class GpwParserArchive(
         val currentUrl = this.url.replace("[date]", format.format(utilDate))
 
 
-        val workbook: Workbook = HSSFWorkbook(URL(currentUrl).openStream())
+        val workbook: Workbook = HSSFWorkbook(URI(currentUrl).toURL().openStream())
         val sheet: Sheet = workbook.getSheetAt(0)
         val iterator: MutableIterator<Row> = sheet.rowIterator()
 

@@ -28,8 +28,12 @@ fun Application.configureScheduler() {
 
             val now = now()
             val isWeekday = now.dayOfWeek in MONDAY..FRIDAY
-            val isWorkingHour = now.hour in 9..16
-            if (isWeekday && isWorkingHour) {
+            val isWorkingHour = now.hour in 9..17
+
+            // run the task only on weekdays and during working hours (9:00 - 17:00)
+            // and in period of 15 minutes (e.g., 9:00, 9:15, 9:30, 9:45, 10:00, etc.)
+
+            if (isWeekday && isWorkingHour && now.minute % 15 == 0) {
                 try {
                     println("Wykonywanie zadania dla: $now")
                     gpwParser.getDataForDate(now.date).forEach {
@@ -45,7 +49,7 @@ fun Application.configureScheduler() {
             }
 
             // Odstęp między kolejnymi uruchomieniami (np. co 15 minut)
-            delay(15.minutes)
+            delay(1.minutes)
         }
     }
 
