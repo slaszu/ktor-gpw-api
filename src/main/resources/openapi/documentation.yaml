@@ -4,7 +4,7 @@ info:
   description: "ktor_gpw_api API"
   version: "1.0.0"
 servers:
-  - url: "https://ktor_gpw_api"
+  - url: "/"
 paths:
   /:
     get:
@@ -13,12 +13,12 @@ paths:
         "200":
           description: "OK"
           content:
-            text/plain:
+            text/html:
               schema:
                 type: "string"
               examples:
                 Example#1:
-                  value: "/swagger"
+                  value: "Go to <a href=\"/swagger\">Swagger</a>"
   /stocks:
     get:
       description: ""

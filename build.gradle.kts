@@ -55,6 +55,7 @@ dependencies {
     implementation(ktorLibs.server.netty)
     implementation(ktorLibs.server.routingOpenapi)
     implementation(ktorLibs.server.swagger)
+    implementation(ktorLibs.server.auth)
 
     implementation(libs.kotlinx.datetime)
 
