@@ -1,20 +1,22 @@
 version: '3.1'
 services:
   app:
-    container_name: gpw-api-app
+    container_name: ktor-gpw-api
     build:
       context: .
-      dockerfile: ./.docker/Dockerfile
+      dockerfile: ./.docker/DockerfileBuilder
     environment:
-      TZ: Europe/Warsaw
-      DB_URL: jdbc:mysql://mysql:3306/gpw-db
-      DB_USER: gpw
-      DB_PASSWORD: gpw-password-213!
-    volumes:
-      - ./ktor-gpw-api-github-release.jar:/app-build/ktor-gpw-api-prod.jar
-    networks:
-      - gpw-network
-    entrypoint: java -jar /app-build/ktor-gpw-api-prod.jar
+      file: local.env
+#    environment:
+#      TZ: Europe/Warsaw
+#      DB_URL: jdbc:mysql://mysql:3306/gpw-db
+#      DB_USER: gpw
+#      DB_PASSWORD: gpw-password-213!
+#    volumes:
+#      - ./ktor-gpw-api-github-release.jar:/app-build/ktor-gpw-api-prod.jar
+#    networks:
+#      - gpw-network
+#    entrypoint: java -jar /app-build/ktor-gpw-api-prod.jar
 
 networks:
   gpw-network:

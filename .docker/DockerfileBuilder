@@ -1,0 +1,41 @@
+# ==========================================
+# ETAP 1: Budowanie natywnego pliku binarnego
+# ==========================================
+FROM container-registry.oracle.com/graalvm/native-image:25 AS builder
+
+WORKDIR /build
+
+# Kopiujemy pliki konfiguracyjne Gradle, aby wykorzystać cache warstw Dockera
+COPY gradlew .
+COPY gradle gradle
+COPY build.gradle.kts settings.gradle.kts ./
+
+
+# Kopiujemy resztę kodu źródłowego
+COPY src src
+COPY module-database module-database
+COPY module-gpwparser module-gpwparser
+
+# Pobieramy zależności (zabezpieczenie przed brakami w cache)
+RUN ./gradlew dependencies --no-daemon
+
+# Uruchamiamy kompilację natywną
+# Opcjonalnie dodano ograniczenie pamięci JVM dla kompilatora, żeby uniknąć OutOfMemory
+RUN ./gradlew nativeCompile -Dorg.gradle.jvmargs="-Xmx4g" --no-daemon
+
+
+# ==========================================
+# ETAP 2: Obraz wynikowy / kontener eksportujący
+# ==========================================
+# Używamy minimalistycznego, bezpiecznego obrazu bazowego (Distroless)
+FROM gcr.io/distroless/base-debian12
+
+WORKDIR /app
+
+# Kopiujemy gotowy plik binarny z etapu pierwszego
+# (UWAGA: Zmień nazwę 'twoja-aplikacja' na dokładną nazwę pliku generowanego przez Twoje Gradle)
+COPY --from=builder /build/build/native/nativeCompile/twoja-aplikacja /app/app
+
+EXPOSE 8080
+
+ENTRYPOINT ["/app/app"]
