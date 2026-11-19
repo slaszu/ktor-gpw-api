@@ -10,11 +10,17 @@ jobs:
           version: '25.4'         # or '25.0' for LTS; See 'Options' for more details
           distribution: 'graalvm' # See 'Supported distributions' for available options
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Example step
+      - name: Display versions
         run: |
           echo "GRAALVM_HOME: $GRAALVM_HOME"
           echo "JAVA_HOME: $JAVA_HOME"
           java --version
           native-image --version
-      - name: Example step using Gradle plugin # https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
+      - name: Build native image
         run: ./gradlew nativeCompile
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+#        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build/native/nativeCompile/ktor-gpw-api

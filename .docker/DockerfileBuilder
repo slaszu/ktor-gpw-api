@@ -27,8 +27,7 @@ RUN ./gradlew nativeCompile -Dorg.gradle.jvmargs="-Xmx4g" --no-daemon
 # ==========================================
 # ETAP 2: Obraz wynikowy / kontener eksportujący
 # ==========================================
-# Używamy minimalistycznego, bezpiecznego obrazu bazowego (Distroless)
-FROM gcr.io/distroless/base-debian12
+FROM ubuntu:24.04
 
 WORKDIR /app
 
