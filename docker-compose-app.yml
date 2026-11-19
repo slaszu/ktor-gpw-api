@@ -5,8 +5,10 @@ services:
     build:
       context: .
       dockerfile: ./.docker/DockerfileBuilder
-    environment:
-      file: local.env
+    env_file:
+      - ./local.env
+    ports:
+      - "8080:8080"
 #    environment:
 #      TZ: Europe/Warsaw
 #      DB_URL: jdbc:mysql://mysql:3306/gpw-db

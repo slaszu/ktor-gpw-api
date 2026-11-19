@@ -34,6 +34,7 @@ graalvmNative {
             buildArgs.add("-H:+InstallExitHandlers")
             buildArgs.add("-H:+ReportUnsupportedElementsAtRuntime")
             buildArgs.add("-H:+ReportExceptionStackTraces")
+            buildArgs.add("-H:+AddAllCharsets")
             buildArgs.add("-J-Xmx4g")
 
             imageName.set("ktor-gpw-api")
