@@ -34,7 +34,7 @@ WORKDIR /app
 
 # Kopiujemy gotowy plik binarny z etapu pierwszego
 # (UWAGA: Zmień nazwę 'twoja-aplikacja' na dokładną nazwę pliku generowanego przez Twoje Gradle)
-COPY --from=builder /build/build/native/nativeCompile/twoja-aplikacja /app/app
+COPY --from=builder /build/build/native/nativeCompile/ktor-gpw-api /app/app
 
 EXPOSE 8080
 
