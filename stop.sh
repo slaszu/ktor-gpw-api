@@ -2,7 +2,7 @@
 
 options=('--all')
 optionsArgs=()
-dockerComposeTypes=('mongo' 'app')
+dockerComposeTypes=('github' 'builder')
 
 dockerComposeTypesArgs=()
 
@@ -36,12 +36,12 @@ done
 #default, without arg
 if [ ${#dockerComposeTypesArgs[@]} -eq 0 ]; then
     echo "Use only app ..."
-    dockerComposeTypesArgs+=( 'app' )
+    dockerComposeTypesArgs+=( 'github' )
 fi
 
 
 #prepare cmd
-cmd="docker-compose";
+cmd="docker compose";
 for name in "${dockerComposeTypesArgs[@]}"
 do
     cmd="$cmd -f docker-compose-$name.yml"

@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  app:
+    platform: linux/amd64
+    image: ubuntu:24.04
+    container_name: ktor-gpw-api
+    working_dir: /app-build
+    env_file:
+      - ./local.env
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./ktor-gpw-api-github-release:/app-build/ktor-gpw-api
+    networks:
+      - gpw-network
+    entrypoint: /app-build/ktor-gpw-api
+
+networks:
+  gpw-network:
+    external: true

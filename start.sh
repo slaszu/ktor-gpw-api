@@ -4,7 +4,7 @@ echo "Use --build option to rebuild containers"
 options=('--build')
 optionsArgs=()
 
-dockerComposeTypes=('app')
+dockerComposeTypes=('github' 'builder')
 dockerComposeTypesArgs=()
 
 #prepare composer types
@@ -27,15 +27,13 @@ if [ ${#optionsArgs[@]} -eq 0 ]; then
     optionsArgs+=( "up -d" )
 fi
 if [ ${#dockerComposeTypesArgs[@]} -eq 0 ]; then
-    echo "Start all services ..."
-    for name in "${dockerComposeTypes[@]}"
-    do
-        dockerComposeTypesArgs+=( $name )
-    done
+    echo "Start github release ..."
+    dockerComposeTypesArgs+=( 'github' )
+
 fi
 
 #prepare cmd
-cmd="docker-compose";
+cmd="docker compose";
 
 
 for name in "${dockerComposeTypesArgs[@]}"
