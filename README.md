@@ -44,5 +44,6 @@ To build a native image, use the following command:
 
 To generate reflection configuration for the native image, use the following command:
 ```
+./gradlew buildFatJar
 java -agentlib:native-image-agent=config-output-dir=src/main/resources/META-INF/native-image/ -jar build/libs/ktor-gpw-api.jar
 ```

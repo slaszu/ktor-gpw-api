@@ -1,12 +1,16 @@
 package pl.slaszu.module
 
 import io.ktor.server.application.*
+import kotlinx.serialization.json.Json
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
+import pl.slaszu.database.api.StockDTO
+import pl.slaszu.database.api.StockPriceDTO
 import pl.slaszu.database.api.StockPriceRepository
 import pl.slaszu.database.di.coreModule
 import pl.slaszu.gpwparser.di.gpwparserModule
+import pl.slaszu.now
 
 fun Application.configureKoin() {
     install(Koin) {
@@ -41,14 +45,34 @@ fun Application.configureKoin() {
 //            println(">>GPWParser `error: ${e.localizedMessage}")
 //        }
 
-
+        println(">>> Warmup db")
         try {
             val stocks = koin.get<StockPriceRepository>()
             val latest = stocks.getLatest("PZU", 1)
-            println(">>> Latest price for PZU")
+            println("Latest price for PZU")
             println(latest)
         } catch (e: Exception) {
             println(">>> DB ERROR: ${e.message}")
         }
+
+        println(">>> Warmup serializer")
+        val stockPrice = StockPriceDTO(
+            price = 100.0f,
+            date = now().date,
+            priceOpen = 99.0f,
+            priceHigh = 102.0f,
+            priceLow = 98.0f,
+            volume = 1000,
+            updatedAt = now()
+        )
+        Json.encodeToString(stockPrice)
+        Json.encodeToString(listOf(stockPrice))
+
+        val stock = StockDTO(
+            code = "PZU",
+            name = "PZU SA"
+        )
+        Json.encodeToString(stock)
+        Json.encodeToString(listOf(stock))
     }
 }
