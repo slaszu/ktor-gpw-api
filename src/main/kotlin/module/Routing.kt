@@ -13,11 +13,13 @@ import pl.slaszu.database.api.StockPriceRepository
 import pl.slaszu.database.api.StockRepository
 import pl.slaszu.getIntQueryParam
 import pl.slaszu.getLocalDatePathParam
+import pl.slaszu.service.ImportService
 
 fun Application.configureRouting() {
 
     val stockRepository by inject<StockRepository>()
     val stockPriceRepository by inject<StockPriceRepository>()
+    val importService by inject<ImportService>()
 
     routing {
         get("/") {
@@ -54,6 +56,21 @@ fun Application.configureRouting() {
                 val code = call.parameters["code"] ?: throw IllegalArgumentException("Invalid Code")
                 val dateTo = call.getLocalDatePathParam("dateTo")
                 call.respond(stockPriceRepository.getToDate(code, dateTo, qty))
+            }
+            get("/import/for/{dateFor}") {
+
+                val dateFor = call.getLocalDatePathParam("dateFor")
+                importService.importData(dateFor)
+                call.respondText("Import for $dateFor completed")
+
+            }
+            get("/import/from/{dateFrom}/to/{dateTo}") {
+
+                val dateFrom = call.getLocalDatePathParam("dateFrom")
+                val dateTo = call.getLocalDatePathParam("dateTo")
+                importService.importData(dateFrom, dateTo)
+                call.respondText("Import from $dateFrom to $dateTo completed")
+
             }
         }
     }

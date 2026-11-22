@@ -21,13 +21,13 @@ internal class GpwParserImpl(
         }
 
         val now = Clock.System.todayIn(TimeZone.currentSystemDefault())
-        if (now > date) {
+        if (now < date) {
             throw IllegalArgumentException("Data for date $date is not satisfied by now")
         }
 
         if (date == now) {
             return gpwParserToday.getDataForDate(date)
         }
-        return gpwParserArchive.getDataForDate(date.minus(DatePeriod(0, 0, 1)))
+        return gpwParserArchive.getDataForDate(date)
     }
 }

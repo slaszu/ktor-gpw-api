@@ -5,12 +5,14 @@ import kotlinx.serialization.json.Json
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
+import org.slf4j.LoggerFactory
 import pl.slaszu.database.api.StockDTO
 import pl.slaszu.database.api.StockPriceDTO
 import pl.slaszu.database.api.StockPriceRepository
 import pl.slaszu.database.di.coreModule
 import pl.slaszu.gpwparser.di.gpwparserModule
 import pl.slaszu.now
+import pl.slaszu.service.ImportService
 
 fun Application.configureKoin() {
     install(Koin) {
@@ -32,8 +34,18 @@ fun Application.configureKoin() {
                 gpwToday = environment.config.property("gpw.url-today").getString(),
                 gpwArchive = environment.config.property("gpw.url-archive").getString(),
                 tmpDir = environment.config.property("gpw.dir-temp").getString(),
-            )
+            ),
+            module {
+                single<ImportService> {
+                    ImportService(
+                        gpwParser = get(),
+                        stockPricePersister = get(),
+                        logger = LoggerFactory.getLogger(ImportService::class.java)
+                    )
+                }
+            }
         )
+
 
 //        try {
 //            val gpwParser = koin.get<GpwParser>()

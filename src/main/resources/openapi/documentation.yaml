@@ -19,6 +19,49 @@ paths:
               examples:
                 Example#1:
                   value: "Go to <a href=\"/swagger\">Swagger</a>"
+  /import/for/{dateFor}:
+    get:
+      description: ""
+      parameters:
+        - name: "dateFor"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: ""
+  /import/from/{dateFrom}/to/{dateTo}:
+    get:
+      description: ""
+      parameters:
+        - name: "dateFrom"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "dateTo"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: ""
   /stocks:
     get:
       description: ""

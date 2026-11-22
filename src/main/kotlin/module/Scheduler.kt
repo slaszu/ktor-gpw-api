@@ -5,24 +5,18 @@ import kotlinx.coroutines.*
 import kotlinx.datetime.DayOfWeek.FRIDAY
 import kotlinx.datetime.DayOfWeek.MONDAY
 import org.koin.ktor.ext.inject
-import pl.slaszu.database.api.StockPricePersister
-import pl.slaszu.getStockDTOForDB
-import pl.slaszu.getStockPriceDTOForDB
-import pl.slaszu.gpwparser.api.GpwParser
 import pl.slaszu.now
+import pl.slaszu.service.ImportService
 import java.time.ZoneId
 import kotlin.time.Duration.Companion.minutes
 
 fun Application.configureScheduler() {
 
-    val gpwParser by inject<GpwParser>()
-    val stockPricePersister by inject<StockPricePersister>()
+    val importService by inject<ImportService>()
 
     println(">> Scheduler configured")
 
     val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
-    val timeZone = ZoneId.of("Europe/Warsaw")
-
     scope.launch {
         while (isActive) {
 
@@ -36,13 +30,7 @@ fun Application.configureScheduler() {
             if (isWeekday && isWorkingHour && now.minute % 15 == 0) {
                 try {
                     println("Wykonywanie zadania dla: $now")
-                    gpwParser.getDataForDate(now.date).forEach {
-                        val stockDTO = it.getStockDTOForDB()
-                        val stockPriceDTO = it.getStockPriceDTOForDB()
-                        println(">>> Stock: $stockDTO")
-                        println(">>> Stock price: $stockPriceDTO")
-                        stockPricePersister.persist(stockDTO, stockPriceDTO)
-                    }
+                    importService.importData(now.date)
                 } catch (e: Exception) {
                     log.error("Błąd podczas wykonywania zadania", e)
                 }

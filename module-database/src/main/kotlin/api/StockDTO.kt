@@ -6,4 +6,9 @@ import kotlinx.serialization.Serializable
 data class StockDTO(
     val code: String?,
     val name: String?
-)
+) {
+    fun isValid(): Boolean {
+        return !code.isNullOrBlank() || !name.isNullOrBlank()
+    }
+
+}
