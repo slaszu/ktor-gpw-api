@@ -35,6 +35,7 @@ graalvmNative {
             buildArgs.add("-H:+ReportUnsupportedElementsAtRuntime")
             buildArgs.add("-H:+ReportExceptionStackTraces")
             buildArgs.add("-H:+AddAllCharsets")
+            buildArgs.add("--enable-url-protocols=http,https")
             buildArgs.add("-J-Xmx4g")
 
             imageName.set("ktor-gpw-api")
