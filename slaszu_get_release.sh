@@ -10,3 +10,7 @@ cmd="curl -L $repo -o ./ktor-gpw-api-github-release"
 
 echo "Command: $cmd"
 eval $cmd
+
+chmod="chmod +x ./ktor-gpw-api-github-release"
+echo "Command: $chmod"
+eval $chmod
