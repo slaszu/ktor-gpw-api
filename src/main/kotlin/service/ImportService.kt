@@ -7,6 +7,7 @@ import org.slf4j.Logger
 import pl.slaszu.database.api.StockPricePersister
 import pl.slaszu.getStockDTOForDB
 import pl.slaszu.getStockPriceDTOForDB
+import pl.slaszu.gpwparser.api.FreeDayException
 import pl.slaszu.gpwparser.api.GpwParser
 import kotlin.math.log
 
@@ -35,7 +36,11 @@ class ImportService(
 
         var current = dateFrom
         while (current <= dateTo) {
-            importData(current)
+            try {
+                importData(current)
+            } catch (e: FreeDayException) {
+                logger.error(">>> Free day: $current")
+            }
             current = current.plus(DatePeriod(days = 1))
         }
     }

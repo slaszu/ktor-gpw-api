@@ -218,7 +218,34 @@
       ]
     },
     {
+      "type": "com.sun.org.apache.xerces.internal.impl.dv.xs.ExtendedSchemaDVFactoryImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.org.apache.xerces.internal.impl.dv.xs.SchemaDVFactoryImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.xml.internal.stream.XMLInputFactoryImpl",
       "methods": [
         {
           "name": "<init>",
@@ -356,6 +383,576 @@
     },
     {
       "type": "com.zaxxer.hikari.util.ConcurrentBag$IConcurrentBagEntry[]"
+    },
+    {
+      "type": "de.focus_shift.jollyday.core.impl.DefaultHolidayManager",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.core.parser.impl.ChristianHolidayParser",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.core.parser.impl.FixedParser",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.core.spi.HolidayConfigurations",
+      "methods": [
+        {
+          "name": "christianHolidays",
+          "parameterTypes": []
+        },
+        {
+          "name": "ethiopianOrthodoxHolidays",
+          "parameterTypes": []
+        },
+        {
+          "name": "fixed",
+          "parameterTypes": []
+        },
+        {
+          "name": "fixedWeekdayBetweenFixed",
+          "parameterTypes": []
+        },
+        {
+          "name": "fixedWeekdayRelativeToFixed",
+          "parameterTypes": []
+        },
+        {
+          "name": "fixedWeekdays",
+          "parameterTypes": []
+        },
+        {
+          "name": "islamicHolidays",
+          "parameterTypes": []
+        },
+        {
+          "name": "relativeToEasterSunday",
+          "parameterTypes": []
+        },
+        {
+          "name": "relativeToFixed",
+          "parameterTypes": []
+        },
+        {
+          "name": "relativeToWeekdayInMonth",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.JaxbConfigurationService"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.ChristianHoliday",
+      "fields": [
+        {
+          "name": "type"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.ChristianHolidayType",
+      "fields": [
+        {
+          "name": "ASCENSION_DAY"
+        },
+        {
+          "name": "ASH_WEDNESDAY"
+        },
+        {
+          "name": "CARNIVAL"
+        },
+        {
+          "name": "CLEAN_MONDAY"
+        },
+        {
+          "name": "CORPUS_CHRISTI"
+        },
+        {
+          "name": "EASTER"
+        },
+        {
+          "name": "EASTER_MONDAY"
+        },
+        {
+          "name": "EASTER_SATURDAY"
+        },
+        {
+          "name": "EASTER_TUESDAY"
+        },
+        {
+          "name": "GENERAL_PRAYER_DAY"
+        },
+        {
+          "name": "GOOD_FRIDAY"
+        },
+        {
+          "name": "MARDI_GRAS"
+        },
+        {
+          "name": "MAUNDY_THURSDAY"
+        },
+        {
+          "name": "PALM_SUNDAY"
+        },
+        {
+          "name": "PENTECOST"
+        },
+        {
+          "name": "PENTECOST_MONDAY"
+        },
+        {
+          "name": "SACRED_HEART"
+        },
+        {
+          "name": "SHROVE_MONDAY"
+        },
+        {
+          "name": "WHIT_MONDAY"
+        },
+        {
+          "name": "WHIT_SUNDAY"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.ChronologyType",
+      "fields": [
+        {
+          "name": "GREGORIAN"
+        },
+        {
+          "name": "JULIAN"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.Configuration",
+      "fields": [
+        {
+          "name": "description"
+        },
+        {
+          "name": "hierarchy"
+        },
+        {
+          "name": "holidays"
+        },
+        {
+          "name": "sources"
+        },
+        {
+          "name": "subConfigurations"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.EthiopianOrthodoxHoliday"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.EthiopianOrthodoxHolidayType",
+      "fields": [
+        {
+          "name": "ENKUTATASH"
+        },
+        {
+          "name": "MESKEL"
+        },
+        {
+          "name": "TIMKAT"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.Fixed",
+      "fields": [
+        {
+          "name": "day"
+        },
+        {
+          "name": "month"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.FixedWeekdayBetweenFixed"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.FixedWeekdayInMonth"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.FixedWeekdayRelativeToFixed"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.Holiday",
+      "fields": [
+        {
+          "name": "descriptionPropertiesKey"
+        },
+        {
+          "name": "validFrom"
+        },
+        {
+          "name": "validTo"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.HolidayCycleType",
+      "fields": [
+        {
+          "name": "EVEN_YEARS"
+        },
+        {
+          "name": "EVERY_YEAR"
+        },
+        {
+          "name": "FIVE_YEARS"
+        },
+        {
+          "name": "FOUR_YEARS"
+        },
+        {
+          "name": "ODD_YEARS"
+        },
+        {
+          "name": "SIX_YEARS"
+        },
+        {
+          "name": "THREE_YEARS"
+        },
+        {
+          "name": "TWO_YEARS"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.HolidayType",
+      "fields": [
+        {
+          "name": "BANK_HOLIDAY"
+        },
+        {
+          "name": "OBSERVANCE"
+        },
+        {
+          "name": "PUBLIC_HOLIDAY"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.Holidays",
+      "fields": [
+        {
+          "name": "christianHoliday"
+        },
+        {
+          "name": "fixed"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.IslamicHoliday"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.IslamicHolidayType",
+      "fields": [
+        {
+          "name": "ARAFAAT"
+        },
+        {
+          "name": "ARBAEEN"
+        },
+        {
+          "name": "ASCHURA"
+        },
+        {
+          "name": "BIRTH_OF_IMAM_ALI"
+        },
+        {
+          "name": "BIRTH_OF_MUHAMMAD_AND_IMAM_SADIQ"
+        },
+        {
+          "name": "DEATH_OF_FATIMA"
+        },
+        {
+          "name": "DEATH_OF_IMAM_ALI"
+        },
+        {
+          "name": "DEATH_OF_IMAM_HASAN_ASKARI"
+        },
+        {
+          "name": "DEATH_OF_IMAM_REZA"
+        },
+        {
+          "name": "DEATH_OF_IMAM_SADIQ"
+        },
+        {
+          "name": "DEATH_OF_MUHAMMAD_AND_HASAN_MOJTABA"
+        },
+        {
+          "name": "EMBRACING_OF_ISLAM_DAY"
+        },
+        {
+          "name": "GRAND_MAGAL_OF_TOUBA"
+        },
+        {
+          "name": "ID_AL_FITR"
+        },
+        {
+          "name": "ID_AL_FITR_2"
+        },
+        {
+          "name": "ID_AL_FITR_3"
+        },
+        {
+          "name": "ID_AL_GHADIR"
+        },
+        {
+          "name": "ID_UL_ADHA"
+        },
+        {
+          "name": "ID_UL_ADHA_2"
+        },
+        {
+          "name": "ID_UL_ADHA_3"
+        },
+        {
+          "name": "JUMUATUL_WIDA"
+        },
+        {
+          "name": "LAILAT_AL_BARAT"
+        },
+        {
+          "name": "LAILAT_AL_MIRAJ"
+        },
+        {
+          "name": "LAILAT_AL_QADR"
+        },
+        {
+          "name": "MAWLID_AN_NABI"
+        },
+        {
+          "name": "NEWYEAR"
+        },
+        {
+          "name": "NUZUL_AL_QURAN"
+        },
+        {
+          "name": "QAUMEE_DHUVAS"
+        },
+        {
+          "name": "RAMADAN"
+        },
+        {
+          "name": "RAMADAN_END"
+        },
+        {
+          "name": "TASUA"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.Month",
+      "fields": [
+        {
+          "name": "APRIL"
+        },
+        {
+          "name": "AUGUST"
+        },
+        {
+          "name": "DECEMBER"
+        },
+        {
+          "name": "FEBRUARY"
+        },
+        {
+          "name": "JANUARY"
+        },
+        {
+          "name": "JULY"
+        },
+        {
+          "name": "JUNE"
+        },
+        {
+          "name": "MARCH"
+        },
+        {
+          "name": "MAY"
+        },
+        {
+          "name": "NOVEMBER"
+        },
+        {
+          "name": "OCTOBER"
+        },
+        {
+          "name": "SEPTEMBER"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.MoveableHoliday"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.MovingCondition"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.ObjectFactory"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.RelativeToEasterSunday"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.RelativeToFixed"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.RelativeToWeekdayInMonth"
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.Source",
+      "fields": [
+        {
+          "name": "of"
+        },
+        {
+          "name": "value"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.Sources",
+      "fields": [
+        {
+          "name": "source"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.Weekday",
+      "fields": [
+        {
+          "name": "FRIDAY"
+        },
+        {
+          "name": "MONDAY"
+        },
+        {
+          "name": "SATURDAY"
+        },
+        {
+          "name": "SUNDAY"
+        },
+        {
+          "name": "THURSDAY"
+        },
+        {
+          "name": "TUESDAY"
+        },
+        {
+          "name": "WEDNESDAY"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.When",
+      "fields": [
+        {
+          "name": "AFTER"
+        },
+        {
+          "name": "BEFORE"
+        },
+        {
+          "name": "CLOSEST"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.Which",
+      "fields": [
+        {
+          "name": "FIRST"
+        },
+        {
+          "name": "FOURTH"
+        },
+        {
+          "name": "LAST"
+        },
+        {
+          "name": "SECOND"
+        },
+        {
+          "name": "THIRD"
+        }
+      ]
+    },
+    {
+      "type": "de.focus_shift.jollyday.jaxb.mapping.With",
+      "fields": [
+        {
+          "name": "NEXT"
+        },
+        {
+          "name": "PREVIOUS"
+        }
+      ]
     },
     {
       "type": "io.ktor.http.ContentType"
@@ -578,6 +1175,57 @@
       "type": "io.opentelemetry.api.GlobalOpenTelemetry"
     },
     {
+      "type": "jakarta.servlet.Servlet"
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.XmlElement",
+      "methods": [
+        {
+          "name": "type",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.XmlElementDecl",
+      "methods": [
+        {
+          "name": "scope",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.XmlEnum",
+      "methods": [
+        {
+          "name": "value",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.XmlSeeAlso",
+      "methods": [
+        {
+          "name": "value",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.XmlType",
+      "methods": [
+        {
+          "name": "factoryClass",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.awt.Image"
+    },
+    {
       "type": "java.io.FileDescriptor"
     },
     {
@@ -797,6 +1445,9 @@
       "type": "java.security.AlgorithmParametersSpi"
     },
     {
+      "type": "java.security.KeyStoreSpi"
+    },
+    {
       "type": "java.security.interfaces.ECPrivateKey"
     },
     {
@@ -812,10 +1463,22 @@
       "type": "java.sql.Statement[]"
     },
     {
+      "type": "java.util.ArrayList",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "java.util.UUID"
     },
     {
       "type": "java.util.concurrent.ScheduledThreadPoolExecutor"
+    },
+    {
+      "type": "javax.servlet.Servlet"
     },
     {
       "type": "kotlin.Any"
@@ -1001,6 +1664,27 @@
       "type": "kotlinx.coroutines.scheduling.WorkQueue"
     },
     {
+      "type": "org.apache.logging.log4j.util.EnvironmentPropertySource"
+    },
+    {
+      "type": "org.apache.logging.log4j.util.SystemPropertiesPropertySource"
+    },
+    {
+      "type": "org.glassfish.jaxb.core.v2.model.nav.ReflectionNavigator",
+      "methods": [
+        {
+          "name": "getInstance",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.JAXBContextFactory"
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.runtime.unmarshaller.StAXExConnector"
+    },
+    {
       "type": "org.jetbrains.exposed.v1.core.BasicUuidColumnType"
     },
     {
@@ -1043,10 +1727,19 @@
       "type": "org.jetbrains.exposed.v1.jdbc.ExposedConnectionImpl"
     },
     {
+      "type": "org.jvnet.fastinfoset.stax.FastInfosetStreamReader"
+    },
+    {
+      "type": "org.jvnet.staxex.XMLStreamReaderEx"
+    },
+    {
       "type": "org.koin.core.Koin"
     },
     {
       "type": "org.koin.core.scope.Scope"
+    },
+    {
+      "type": "org.osgi.framework.FrameworkUtil"
     },
     {
       "type": "pl.slaszu.ApplicationKt",
@@ -1127,6 +1820,24 @@
       "type": "sun.nio.ch.SelectorImpl"
     },
     {
+      "type": "sun.security.pkcs12.PKCS12KeyStore",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "sun.security.provider.DSA$SHA224withDSA",
       "methods": [
         {
@@ -1137,6 +1848,24 @@
     },
     {
       "type": "sun.security.provider.DSA$SHA256withDSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.JavaKeyStore$DualFormatJKS",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.JavaKeyStore$JKS",
       "methods": [
         {
           "name": "<init>",
@@ -1210,6 +1939,15 @@
       ]
     },
     {
+      "type": "sun.security.provider.certpath.PKIXCertPathValidator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "sun.security.rsa.PSSParameters",
       "methods": [
         {
@@ -1246,7 +1984,25 @@
       ]
     },
     {
+      "type": "sun.security.rsa.RSASignature$SHA256withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "sun.security.ssl.KeyManagerFactoryImpl$SunX509",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.SSLContextImpl$DefaultSSLContext",
       "methods": [
         {
           "name": "<init>",
@@ -1273,6 +2029,30 @@
       ]
     },
     {
+      "type": "sun.security.x509.AuthorityInfoAccessExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.AuthorityKeyIdentifierExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
       "type": "sun.security.x509.BasicConstraintsExtension",
       "methods": [
         {
@@ -1283,6 +2063,111 @@
           ]
         }
       ]
+    },
+    {
+      "type": "sun.security.x509.CRLDistributionPointsExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.CertificatePoliciesExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.ExtendedKeyUsageExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.KeyUsageExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.NetscapeCertTypeExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.PrivateKeyUsageExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.SubjectAlternativeNameExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.SubjectKeyIdentifierExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en_US"
     },
     {
       "type": "sun.util.resources.cldr.CalendarData"
@@ -1300,6 +2185,9 @@
       "glob": ""
     },
     {
+      "glob": "META-INF/log4j-provider.properties"
+    },
+    {
       "glob": "META-INF/native/libnetty_transport_native_kqueue.dylib"
     },
     {
@@ -1315,6 +2203,9 @@
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
     },
     {
+      "glob": "META-INF/services/de.focus_shift.jollyday.core.spi.HolidayCalendarConfigurationService"
+    },
+    {
       "glob": "META-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider"
     },
     {
@@ -1322,6 +2213,9 @@
     },
     {
       "glob": "META-INF/services/io.ktor.server.config.ConfigLoader"
+    },
+    {
+      "glob": "META-INF/services/jakarta.xml.bind.JAXBContextFactory"
     },
     {
       "glob": "META-INF/services/java.net.spi.InetAddressResolverProvider"
@@ -1345,6 +2239,12 @@
       "glob": "META-INF/services/javax.xml.parsers.SAXParserFactory"
     },
     {
+      "glob": "META-INF/services/javax.xml.stream.XMLInputFactory"
+    },
+    {
+      "glob": "META-INF/services/javax.xml.validation.SchemaFactory"
+    },
+    {
       "glob": "META-INF/services/kotlin.reflect.jvm.internal.impl.km.internal.extensions.MetadataExtensions"
     },
     {
@@ -1352,6 +2252,15 @@
     },
     {
       "glob": "META-INF/services/kotlin.reflect.jvm.internal.impl.util.ModuleVisibilityHelper"
+    },
+    {
+      "glob": "META-INF/services/org.apache.logging.log4j.spi.Provider"
+    },
+    {
+      "glob": "META-INF/services/org.apache.logging.log4j.util.PropertySource"
+    },
+    {
+      "glob": "META-INF/services/org.jetbrains.exposed.v1.core.dao.id.EntityIDFactory"
     },
     {
       "glob": "META-INF/services/org.jetbrains.exposed.v1.core.statements.GlobalStatementInterceptor"
@@ -1384,10 +2293,34 @@
       "glob": "com/mysql/cj/TlsSettings.properties"
     },
     {
+      "glob": "de/focus_shift/jollyday/jaxb/mapping/jaxb.index"
+    },
+    {
+      "glob": "focus_shift.de/jollyday/schema/holiday/holiday.xsd"
+    },
+    {
+      "glob": "holidays/Holidays_pl.xml"
+    },
+    {
+      "glob": "jollyday.properties"
+    },
+    {
       "glob": "kotlin/collections/collections.kotlin_builtins"
     },
     {
       "glob": "kotlin/kotlin.kotlin_builtins"
+    },
+    {
+      "glob": "log4j2.StatusLogger.properties"
+    },
+    {
+      "glob": "log4j2.component.properties"
+    },
+    {
+      "glob": "log4j2.simplelog.properties"
+    },
+    {
+      "glob": "log4j2.system.properties"
     },
     {
       "glob": "logback-test.xml"
@@ -1396,11 +2329,32 @@
       "glob": "logback.xml"
     },
     {
-      "glob": "openapi/documentation.yaml"
+      "module": "java.base",
+      "glob": "jdk/internal/icu/impl/data/icudt76b/nfc.nrm"
     },
     {
       "module": "java.base",
-      "glob": "jdk/internal/icu/impl/data/icudt76b/nfc.nrm"
+      "glob": "jdk/internal/icu/impl/data/icudt76b/nfkc.nrm"
+    },
+    {
+      "module": "java.base",
+      "glob": "jdk/internal/icu/impl/data/icudt76b/uprops.icu"
+    },
+    {
+      "module": "java.base",
+      "glob": "sun/net/idn/uidna.spp"
+    },
+    {
+      "module": "java.xml",
+      "glob": "com/sun/org/apache/xerces/internal/impl/xpath/regex/message.properties"
+    },
+    {
+      "module": "java.xml",
+      "glob": "com/sun/org/apache/xerces/internal/impl/xpath/regex/message_pl.properties"
+    },
+    {
+      "module": "java.xml",
+      "glob": "com/sun/org/apache/xerces/internal/impl/xpath/regex/message_pl_PL.properties"
     },
     {
       "module": "jdk.jfr",
@@ -1408,6 +2362,9 @@
     },
     {
       "bundle": "com.mysql.cj.LocalizedErrorMessages"
+    },
+    {
+      "bundle": "com.sun.org.apache.xerces.internal.impl.xpath.regex.message"
     }
   ]
 }
