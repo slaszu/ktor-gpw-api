@@ -4,6 +4,8 @@ services:
     platform: linux/amd64
     image: ubuntu:24.04
     container_name: ktor-gpw-api
+    environment:
+      - TZ=Europe/Warsaw
     working_dir: /app-build
     env_file:
       - ./local.env
