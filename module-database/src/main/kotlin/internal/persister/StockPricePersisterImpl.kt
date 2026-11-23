@@ -21,7 +21,7 @@ internal class StockPricePersisterImpl(
             throw IllegalArgumentException("Invalid stock data. Please provide a valid code or name")
         }
 
-        val stockId = findStock(stockDTO) ?: createStock(stockDTO)
+        val stockId = findStockByCode(stockDTO.code) ?: findStockByName(stockDTO.name) ?: createStock(stockDTO)
 
         val stockPriceId = findStockPriceId(stockId, stockPriceDTO.date)
 
@@ -78,25 +78,37 @@ internal class StockPricePersisterImpl(
         }
     }
 
-    private fun findStock(stockDTO: StockDTO): UUID? {
+    private fun findStockByName(name: String?): UUID? {
+
+        if (name.isNullOrBlank()) {
+            return null
+        }
+
         return transaction(database) {
             val stockQuery = StocksTable
                 .select(
                     StocksTable.id
                 )
+                .where { StocksTable.name eq name }
                 .limit(1);
 
-            if (stockDTO.code.isNullOrBlank().not()) {
-                stockQuery.andWhere {
-                    StocksTable.code eq stockDTO.code
-                }
-            } else if (stockDTO.name.isNullOrBlank().not()) {
-                stockQuery.andWhere {
-                    StocksTable.name eq stockDTO.name
-                }
-            } else {
-                throw IllegalArgumentException("Invalid stock data. Please provide a valid code or name")
-            }
+            stockQuery.firstOrNull()?.get(StocksTable.id)?.value
+        }
+    }
+
+    private fun findStockByCode(code: String?): UUID? {
+
+        if (code.isNullOrBlank()) {
+            return null
+        }
+
+        return transaction(database) {
+            val stockQuery = StocksTable
+                .select(
+                    StocksTable.id
+                )
+                .where { StocksTable.code eq code }
+                .limit(1);
 
             stockQuery.firstOrNull()?.get(StocksTable.id)?.value
         }
